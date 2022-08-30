@@ -2,6 +2,7 @@
   "name": "tecrawl",
   "version": "1.0.0",
   "description": "基于Crawler和temme的静态网页抓取工具",
+  "repository": "github:sunkeyfong/tecrawl",
   "main": "index.js",
   "dependencies": {
     "axios": "^0.21.1",
