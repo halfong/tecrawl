@@ -9,7 +9,7 @@ module.exports = class Tecrawl{
   threads = []
 
   /**
-   * 创建bat
+   * 创建Tecrawl
    * @param {array} sources
    * @returns 
    */
@@ -24,7 +24,7 @@ module.exports = class Tecrawl{
       this.threads = this.threads.concat( result );
     }
     this.__format();
-    console.log(`Bat::已抓取${this.threads.length} URL`);
+    console.log(`Tecrawl::已抓取${this.threads.length} URL`);
   }
 
   async __fetch({ queue = [], tm, format = null, maxConnections = 5, rateLimit = 1000, concat = true }, verbose = false ){
@@ -55,7 +55,6 @@ module.exports = class Tecrawl{
 
   __format(){
     this.threads = this.threads.sort( (a,b)=> b.date - a.date )
-    console.log( this.threads )
     this.threads.forEach( _th => {
       _th.crawled_at = new Date()
       _th.date = util.reDate( _th.date, _th.crawled_at )  //从human时间恢复为date
@@ -76,13 +75,13 @@ module.exports = class Tecrawl{
 
   dateBetween( sdate, edate ){
     this.threads = this.threads.filter( i => moment(i.date).isBetween( sdate, edate ) );
-    console.log(`Bat::dateBetween ${sdate}-${edate} 剩余${this.threads.length}条`);
+    console.log(`Tecrawl::dateBetween ${sdate}-${edate} 剩余${this.threads.length}条`);
     return this;
   }
 
   unique( k ){
     this.threads = util.arrayObject.unique( this.threads, k );
-    console.log(`Bat::unique ${k} 剩余${this.threads.length}条`);
+    console.log(`Tecrawl::unique ${k} 剩余${this.threads.length}条`);
     return this;
   }
 
