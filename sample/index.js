@@ -6,7 +6,6 @@ const { Tecrawl } = require('../');
 module.exports = ( async function(){
 
   const $tec = new Tecrawl({
-    onCrawled : function(_tec){ console.log( 'sample.onCrawled', _tec.threads ); },
     sources : [
       {
         name : '中国旅游新闻网',
@@ -28,6 +27,7 @@ module.exports = ( async function(){
         }),
       }
     ],
+    onCrawled : function(_tec){ console.log( 'sample.onCrawled', _tec.threads ); },
   });
 
   await $tec.crawl();

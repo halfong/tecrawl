@@ -5,20 +5,16 @@ const util = require('./util');
 
 module.exports = class Tecrawl{
 
-  threads = []
-
-  onCrawled = async $tec => console.log('onCrawled')
   sources = []
+  threads = []
 
   /**
    * 创建bat
-   * @param {function} onCrawled
    * @param {array} sources
    * @returns 
    */
-  constructor({ onCrawled = null, sources = null }){
-    if(onCrawled) this.onCrawled = onCrawled
-    if(sources) this.sources = sources
+  constructor(sources = []){
+    this.sources = sources
     return this;
   }
 
@@ -29,7 +25,6 @@ module.exports = class Tecrawl{
     }
     this.__format();
     console.log(`Bat::已抓取${this.threads.length} URL`);
-    this.onCrawled && await this.onCrawled(this);
   }
 
   async __fetch({ queue = [], tm, format = null, maxConnections = 5, rateLimit = 1000, concat = true }, verbose = false ){
