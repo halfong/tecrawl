@@ -13,7 +13,7 @@ module.exports = class Tecrawl{
    * @param {array} sources
    * @returns 
    */
-  constructor(sources = []){
+  constructor({ sources = [] }){
     this.sources = sources
     return this;
   }

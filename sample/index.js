@@ -26,10 +26,11 @@ module.exports = ( async function(){
             return i
         }),
       }
-    ],
-    onCrawled : function(_tec){ console.log( 'sample.onCrawled', _tec.threads ); },
+    ]
   });
 
   await $tec.crawl();
+  console.log( '[Threads]', $tec.threads );
+
   process.exit(0);
 })();
