@@ -31,6 +31,7 @@ module.exports = class Tecrawl{
     var result = []
     const c = new Crawler({
         maxConnections, //最大同时连接数
+        retries: 0,
         rateLimit,   //每项任务间隔1000ms
         callback : async function (error, res, done) {
             if(error) console.log(error);
